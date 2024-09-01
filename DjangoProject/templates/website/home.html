@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Django Project</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}" />
+</head>
+
+<body>
+    <div class="container">
+        <h1><span>Welcome to Our Website!</span></h1>
+        <p>Discover a world of possibilities and explore the features we offer.</p>
+        <a href="/about" class="btn">About Us</a>
+    </div>
+    <div class="features">
+        <div class="feature-item">
+            <div class="icon">
+                <img src="{% static 'icons/innovation.svg' %}" alt="Innovation">
+            </div>
+            <h2>Innovation</h2>
+            <p>Explore cutting-edge technology that drives our solutions. We are at the forefront of innovation to
+                deliver the best to our users.</p>
+        </div>
+        <div class="feature-item">
+            <div class="icon">
+                <img src="{% static 'icons/security.svg' %}" alt="Security">
+            </div>
+            <h2>Security</h2>
+            <p>Your data is safe with us. Our top-notch security measures ensure that your information is protected from
+                any threats.</p>
+        </div>
+        <div class="feature-item">
+            <div class="icon">
+                <img src="{% static 'icons/support.svg' %}" alt="Support">
+            </div>
+            <h2>Support</h2>
+            <p>Our dedicated support team is here to help you 24/7. We ensure that any issues are resolved quickly and
+                efficiently.</p>
+        </div>
+    </div>
+
+</body>
+
+</html>
