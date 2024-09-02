@@ -1,40 +1,73 @@
-{% extends 'layout.html' %} {% load static %} {% block title %}Home - Django
-Project{% endblock %} {% block content %}
-<div class="container">
-  <h1><span>Welcome to Our Website!</span></h1>
-  <p>Discover a world of possibilities and explore the features we offer.</p>
-  <a href="/about" class="btn">About Us</a>
+<!-- prettier-ignore -->
+{% extends 'layout.html' %} 
+{% block title %}Home - DjangoProject{% endblock %}
+{% load static %}
+{% block content %}
+<div class="bg-gradient-to-r from-blue-50 to-blue-100 min-h-screen py-16">
+  <div class="container mx-auto px-4 text-center">
+    <h1 class="text-4xl font-extrabold text-gray-900 mb-6">
+      <span class="block">Welcome to Our Website!</span>
+    </h1>
+    <p class="text-lg text-gray-600 mb-10">
+      Discover a world of possibilities and explore the features we offer.
+    </p>
+    <a
+      href="/about"
+      class="inline-block bg-indigo-600 text-white py-3 px-8 rounded-lg shadow-lg hover:bg-indigo-700 transition duration-300"
+    >
+      About Us
+    </a>
+  </div>
+
+  <div class="flex flex-wrap gap-10 px-4 mx-auto mt-16 justify-center">
+    <div
+      class="feature-item flex-1 min-w-[250px] bg-white p-8 rounded-lg shadow-md text-center"
+    >
+      <div class="icon mb-4">
+        <img
+          src="{% static 'icons/innovation.svg' %}"
+          alt="Innovation"
+          class="h-16 w-16 mx-auto"
+        />
+      </div>
+      <h2 class="text-2xl font-bold text-gray-800 mb-4">Innovation</h2>
+      <p class="text-gray-600">
+        Explore cutting-edge technology that drives our solutions. We are at the
+        forefront of innovation to deliver the best to our users.
+      </p>
+    </div>
+    <div
+      class="feature-item flex-1 min-w-[250px] bg-white p-8 rounded-lg shadow-md text-center"
+    >
+      <div class="icon mb-4">
+        <img
+          src="{% static 'icons/security.svg' %}"
+          alt="Security"
+          class="h-16 w-16 mx-auto"
+        />
+      </div>
+      <h2 class="text-2xl font-bold text-gray-800 mb-4">Security</h2>
+      <p class="text-gray-600">
+        Your data is safe with us. Our top-notch security measures ensure that
+        your information is protected from any threats.
+      </p>
+    </div>
+    <div
+      class="feature-item flex-1 min-w-[250px] bg-white p-8 rounded-lg shadow-md text-center"
+    >
+      <div class="icon mb-4">
+        <img
+          src="{% static 'icons/support.svg' %}"
+          alt="Support"
+          class="h-16 w-16 mx-auto"
+        />
+      </div>
+      <h2 class="text-2xl font-bold text-gray-800 mb-4">Support</h2>
+      <p class="text-gray-600">
+        Our dedicated support team is here to help you 24/7. We ensure that any
+        issues are resolved quickly and efficiently.
+      </p>
+    </div>
+  </div>
+  {% endblock %}
 </div>
-<div class="features">
-  <div class="feature-item">
-    <div class="icon">
-      <img src="{% static 'icons/innovation.svg' %}" alt="Innovation" />
-    </div>
-    <h2>Innovation</h2>
-    <p>
-      Explore cutting-edge technology that drives our solutions. We are at the
-      forefront of innovation to deliver the best to our users.
-    </p>
-  </div>
-  <div class="feature-item">
-    <div class="icon">
-      <img src="{% static 'icons/security.svg' %}" alt="Security" />
-    </div>
-    <h2>Security</h2>
-    <p>
-      Your data is safe with us. Our top-notch security measures ensure that
-      your information is protected from any threats.
-    </p>
-  </div>
-  <div class="feature-item">
-    <div class="icon">
-      <img src="{% static 'icons/support.svg' %}" alt="Support" />
-    </div>
-    <h2>Support</h2>
-    <p>
-      Our dedicated support team is here to help you 24/7. We ensure that any
-      issues are resolved quickly and efficiently.
-    </p>
-  </div>
-</div>
-{% endblock %}
