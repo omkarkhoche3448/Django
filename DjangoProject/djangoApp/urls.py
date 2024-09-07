@@ -7,3 +7,4 @@ urlpatterns = [
     path('<int:framework_id>/', views.framework_details, name='framework_details'),
  
 ]
+    
