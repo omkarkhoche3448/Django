@@ -1,30 +1,32 @@
 from django.contrib import admin
-from .models import FrameWork_Varity, Framework_Reviews, Framework_courses, FrameWork_certificate
+from .models import FrameWork_Varity, Framework_Reviews, Framework_courses, FrameWork_certificate,EnrolledCourse
 
-# Registering FrameWork_Varity model
+# Register the models with the Django admin site
 @admin.register(FrameWork_Varity)
-class FrameWorkVarityAdmin(admin.ModelAdmin):
+class FrameWork_VarityAdmin(admin.ModelAdmin):
     list_display = ('name', 'framework_type', 'date_time')
     search_fields = ('name', 'framework_type')
     list_filter = ('framework_type',)
 
-# Registering Framework_Reviews model
+@admin.register(Framework_courses)
+class Framework_coursesAdmin(admin.ModelAdmin):
+    list_display = ('course_name', 'framework', 'course_duration', 'course_price')
+    search_fields = ('course_name', 'course_description')
+    list_filter = ('framework',)
+
 @admin.register(Framework_Reviews)
-class FrameworkReviewsAdmin(admin.ModelAdmin):
-    list_display = ('framework', 'user', 'rating', 'date_time')
-    search_fields = ('framework__name', 'user__username')
+class Framework_ReviewsAdmin(admin.ModelAdmin):
+    list_display = ('user', 'framework', 'rating', 'date_time')
+    search_fields = ('user__username', 'review')
     list_filter = ('rating',)
 
-# Registering Framework_courses model
-@admin.register(Framework_courses)
-class FrameworkCoursesAdmin(admin.ModelAdmin):
-    list_display = ('course_name', 'course_duration', 'course_price', 'framework')
-    search_fields = ('course_name',)
-    list_filter = ('framework',)
-
-# Registering FrameWork_certificate model
 @admin.register(FrameWork_certificate)
-class FrameWorkCertificateAdmin(admin.ModelAdmin):
-    list_display = ('certificate_name', 'user', 'certificate_number', 'framework')
-    search_fields = ('certificate_name', 'certificate_number')
-    list_filter = ('framework',)
+class FrameWork_certificateAdmin(admin.ModelAdmin):
+    list_display = ('certificate_name', 'user', 'framework', 'certificate_number')
+    search_fields = ('certificate_name', 'certificate_description', 'certificate_number')
+    list_filter = ('framework', 'user')
+
+@admin.register(EnrolledCourse)
+class EnrolledCourseAdmin(admin.ModelAdmin):
+    list_display = ('user', 'course', 'enrollment_date')
+    search_fields = ('user__username', 'course__course_name')

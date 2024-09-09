@@ -1,7 +1,7 @@
 <!-- prettier-ignore -->
-{% extends 'layout.html' %} {% load static %} 
-{% block title %}
-{{ framework.name}} - Details{% endblock %} {% block content %}
+
+{% extends 'layout.html' %} {% load static %} {% block title %}
+ {{framework.name }} - Details {% endblock %} {% block content %}
 <div class="container mx-auto px-4 py-8">
   <!-- Back to List Button -->
   <a
@@ -59,13 +59,24 @@
           <p class="text-gray-800">
             <strong>Price:</strong> {{ course.course_price }}
           </p>
+
+          {% if user.is_authenticated %} {% if course.id in enrolled_courses %}
           <a
-            href="{{ course.course_url }}"
-            target="_blank"
+            href="{% url 'enroll_confirmation' course.id %}"
+            class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mt-4 inline-block"
+          >
+            Go to Review
+          </a>
+
+          {% else %}
+          <a
+            href="{% url 'enroll_course' course.id %}"
             class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded mt-4 inline-block"
           >
             Enroll
           </a>
+
+          {% endif %} {% else %} {% endif %}
         </div>
       </div>
       {% empty %}

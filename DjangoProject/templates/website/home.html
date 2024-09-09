@@ -1,12 +1,14 @@
-<!-- prettier-ignore -->
-{% extends 'layout.html' %} 
-{% block title %}Home - DjangoProject{% endblock %}
-{% load static %}
-{% block content %}
+{% extends 'layout.html' %} {% block title %}Home - DjangoProject{% endblock %}
+{% load static %} {% block content %}
 <div class="bg-gradient-to-r from-blue-50 to-blue-100 min-h-screen py-16">
   <div class="container mx-auto px-4 text-center">
     <h1 class="text-4xl font-extrabold text-gray-900 mb-6">
       <span class="block">Welcome to Our Website!</span>
+      {% if user.is_authenticated %}
+      <span class="block text-xl text-gray-700"
+        >Hello, {{ user.username }}!</span
+      >
+      {% endif %}
     </h1>
     <p class="text-lg text-gray-600 mb-10">
       Discover a world of possibilities and explore the features we offer.

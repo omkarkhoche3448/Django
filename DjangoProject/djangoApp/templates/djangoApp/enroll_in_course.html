@@ -1,0 +1,43 @@
+<!-- prettier-ignore -->
+
+{% extends 'layout.html' %}
+ {% block title %} Enrolled in {{ course.course_name
+}}{% endblock %} {% block content %}
+<div class="container mx-auto px-4 py-8">
+  <a
+    href="{% url 'Items' %}"
+    class="bg-blue-600 m-2 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300 absolute top-[10%] left-10 md:left-0"
+  >
+    Back to List
+  </a>
+  <h1 class="text-3xl font-bold mb-4">
+    You are enrolled in {{ course.course_name }}
+  </h1>
+  <p class="text-lg mb-4">{{ course.course_description }}</p>
+  <p><strong>Duration:</strong> {{ course.course_duration }}</p>
+  <p><strong>Price:</strong> {{ course.course_price }}</p>
+  <hr class="my-8" />
+
+  {% if user.is_authenticated %}
+  <button
+    class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+    onclick="document.getElementById('review-form').classList.remove('hidden')"
+  >
+    Submit Review & Rating
+  </button>
+  <div id="review-form" class="hidden mt-6">
+    <form action="{% url 'submit_review' course.id %}" method="post">
+      {% csrf_token %} {{ review_form.as_p }}
+      <button
+        type="submit"
+        class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+      >
+        Submit Review
+      </button>
+    </form>
+  </div>
+  {% else %}
+  <p class="text-red-600">You must be logged in to submit reviews.</p>
+  {% endif %}
+</div>
+{% endblock %}

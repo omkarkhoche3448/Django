@@ -3,7 +3,7 @@ from django.utils import timezone
 from django.urls import reverse
 from django.contrib.auth.models import User
 
-class FrameWork_Varity(models.Model):  
+class FrameWork_Varity(models.Model):
     FRAMEWORK_TYPE_CHOICE = [
         ("React", "JavaScript"),
         ("Next.js", "TypeScript"),
@@ -24,23 +24,9 @@ class FrameWork_Varity(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse("_detail", kwargs={"pk": self.pk})
+        return reverse("framework_details", kwargs={"framework_id": self.pk})
 
-
-# One-to-many relationship: Framework has many reviews
-class Framework_Reviews(models.Model):  
-    framework = models.ForeignKey(FrameWork_Varity, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    review = models.TextField(default='')
-    rating = models.IntegerField(default=0)
-    date_time = models.DateTimeField(default=timezone.now)
-
-    def __str__(self):
-        return f'Review by {self.user.username} on {self.framework.name}'
-
-
-# Many-to-one relationship: Framework can have many courses
-class Framework_courses(models.Model):  
+class Framework_courses(models.Model):
     framework = models.ForeignKey(FrameWork_Varity, on_delete=models.CASCADE)
     course_name = models.CharField(max_length=50)
     course_description = models.TextField(default='')
@@ -52,9 +38,18 @@ class Framework_courses(models.Model):
     def __str__(self):
         return self.course_name
 
+class Framework_Reviews(models.Model):
+    framework = models.ForeignKey(FrameWork_Varity, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    review = models.TextField(default='')
+    rating = models.IntegerField(default=0)
+    date_time = models.DateTimeField(default=timezone.now)
+    course = models.ForeignKey(Framework_courses, on_delete=models.CASCADE, null=True, blank=True)  # Renamed to 'course'
 
-# One-to-many relationship: Framework can have many certificates
-class FrameWork_certificate(models.Model):  
+    def __str__(self):
+        return f'Review by {self.user.username} on {self.framework.name}'
+
+class FrameWork_certificate(models.Model):
     framework = models.ForeignKey(FrameWork_Varity, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     certificate_name = models.CharField(max_length=50)
@@ -65,3 +60,11 @@ class FrameWork_certificate(models.Model):
 
     def __str__(self):
         return f'{self.certificate_name} - {self.user.username}'
+
+class EnrolledCourse(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    course = models.ForeignKey(Framework_courses, on_delete=models.CASCADE)
+    enrollment_date = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return f'{self.user.username} enrolled in {self.course.course_name}'
