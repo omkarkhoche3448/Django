@@ -1,3 +1,4 @@
+```markdown
 # Django Project
 
 ## Overview
@@ -20,16 +21,25 @@ This is a Django application designed to demonstrate Django functionality and ba
 1. **Clone the Repository:**
 
    ```bash
-   git clone https://github.com/yourusername/your-repository.git
-   cd your-repository
+   git clone https://github.com/omkarkhoche3448/Django.git
+   cd Django
    ```
 
 2. **Create and Activate a Virtual Environment:**
 
-   ```bash
-   python -m venv .venv
-   source .venv/bin/activate  # On Windows use `.venv\Scripts\activate`
-   ```
+   - On macOS/Linux:
+
+     ```bash
+     python -m venv .venv
+     source .venv/bin/activate
+     ```
+
+   - On Windows:
+
+     ```bash
+     python -m venv .venv
+     .venv\Scripts\activate
+     ```
 
 3. **Install Dependencies:**
 
@@ -37,7 +47,27 @@ This is a Django application designed to demonstrate Django functionality and ba
    pip install -r requirements.txt
    ```
 
-4. **Run the Development Server:**
+4. **Apply Migrations:**
+
+   ```bash
+   python manage.py migrate
+   ```
+
+5. **Create a Superuser (Optional):**
+
+   If you need an admin user, create one by running:
+
+   ```bash
+   python manage.py createsuperuser
+   ```
+
+6. **Collect Static Files:**
+
+   ```bash
+   python manage.py collectstatic
+   ```
+
+7. **Run the Development Server:**
 
    ```bash
    python manage.py runserver
@@ -49,3 +79,4 @@ This is a Django application designed to demonstrate Django functionality and ba
 
 For additional details, visit the Notion page: [Django Project Notes](https://www.notion.so/Django-f006a1f86a944887ad4bd758b2c10fe8)
 ```
+
