@@ -78,5 +78,4 @@ This is a Django application designed to demonstrate Django functionality and ba
 ## Notion Notes
 
 For additional details, visit the Notion page: [Django Project Notes](https://www.notion.so/Django-f006a1f86a944887ad4bd758b2c10fe8)
-```
 
