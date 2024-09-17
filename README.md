@@ -1,4 +1,4 @@
-```markdown
+
 # Django Project
 
 ## Overview
